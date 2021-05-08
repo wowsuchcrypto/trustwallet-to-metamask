@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
-from bip_utils import Bip32, Bip44, Bip39SeedGenerator, Bip44Coins
+from bip_utils import Bip32, Bip39SeedGenerator
 from binascii import hexlify
 
 if len(sys.argv) < 2 or sys.argv[1] == "":
