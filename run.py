@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
-from bip_utils import Bip32, Bip39SeedGenerator
+from bip_utils import Bip32, Bip39SeedGenerator, EthAddr
 from binascii import hexlify
 
 if len(sys.argv) < 2 or sys.argv[1] == "":
@@ -28,4 +28,5 @@ print("BIP32 extended private key: {}".format(extended.PrivateKey().ToExtended()
 derived_0_path = f"{derivation_path}/0"
 derived_0_address = extended.DerivePath("0")
 print("Derived {} public key: {}".format(derived_0_path, derived_0_address.EcdsaPublicKey().RawCompressed().ToHex()))
+print("Derived {} public address: {}".format(derived_0_path, EthAddr.ToAddress(derived_0_address.EcdsaPublicKey().RawUncompressed().ToBytes()[1:])))
 print("Derived {} private key: {}".format(derived_0_path, derived_0_address.EcdsaPrivateKey().Raw().ToHex()))
